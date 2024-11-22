@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    height: 100vh;
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    width: 3em;
+    height: 3em;
+    object-fit: cover;
+}
+
+/* Navbar Styles */
+.navbar {
+    height: 60px;
+    background-color: #1e293b;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navLinks {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navLinks li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navLinks li a:hover {
+    color: #3b82f6; /* Blue highlight */
+}
+
+/* Dashboard Body */
+.dashboardBody {
+    display: flex;
+    flex: 1;
+    background-color: #f1f5f9; /* Light gray background */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #1e293b;
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    color: #3b82f6;
+}
+
+.mainContent {
+    flex: 1;
+    padding: 20px;
+    background-color: #f1f5f9;
+    overflow: auto;
+}
+
+.mainContent h2 {
+    margin-bottom: 20px;
+    color: #1e293b;
+}
+
+/* Tickets Table */
+.ticketsTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ticketsTable th,
+.ticketsTable td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+}
+
+.ticketsTable th {
+    background-color: #3b82f6;
+    color: white;
+    font-weight: bold;
+}
+
+.ticketsTable tbody tr:nth-child(odd) {
+    background-color: #f8fafc;
+}
+
+.ticketsTable tbody tr:hover {
+    background-color: #e2e8f0;
+}

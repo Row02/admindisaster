@@ -125,3 +125,18 @@
 .ticketsTable tbody tr:hover {
     background-color: #e2e8f0;
 }
+
+.logoutButton {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.logoutButton:hover {
+    background-color: #ff1a1a;
+}

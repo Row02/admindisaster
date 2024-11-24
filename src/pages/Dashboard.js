@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Dashboard.module.css";
 import logo from "../assets/logo.png";
-import { db } from "../firebase/firebase";
+import { db, auth } from "../firebase/firebase"; // Import auth
+import { signOut } from "firebase/auth"; // Import signOut
 import { collection, getDocs } from "firebase/firestore";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 export default function Dashboard() {
     const [tickets, setTickets] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchTickets = async () => {
@@ -36,21 +39,28 @@ export default function Dashboard() {
         return new Date(dateTime).toLocaleString("en-US", options);
     };
 
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            navigate("/"); // Redirect to login page
+        } catch (error) {
+            console.error("Error logging out: ", error);
+        }
+    };
+
     return (
         <div className={styles.container}>
             <header className={styles.navbar}>
                 <img src={logo} alt="Logo" className={styles.logo} />
                 <nav>
                     <ul className={styles.navLinks}>
-                        <li><a href="#">Logout</a></li>
+                        <li><button onClick={handleLogout} className={styles.logoutButton}>Logout</button></li>
                     </ul>
                 </nav>
             </header>
             <div className={styles.dashboardBody}>
                 <aside className={styles.sidebar}>
-                    {/* <ul>
-                        <li><a href="#">Tickets</a></li>
-                    </ul> */}
+                    {/* Sidebar content */}
                 </aside>
                 <main className={styles.mainContent}>
                     <h2>Reports</h2>

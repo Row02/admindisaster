@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 export default function Dashboard() {
     const [tickets, setTickets] = useState([]);
+    const [selectedImage, setSelectedImage] = useState(null); // To store the image to be displayed in the modal
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -48,6 +49,14 @@ export default function Dashboard() {
         }
     };
 
+    const handleImageClick = (image) => {
+        setSelectedImage(image); // Set the image to display in the modal
+    };
+
+    const closeModal = () => {
+        setSelectedImage(null); // Close the modal
+    };
+
     return (
         <div className={styles.container}>
             <header className={styles.navbar}>
@@ -59,9 +68,6 @@ export default function Dashboard() {
                 </nav>
             </header>
             <div className={styles.dashboardBody}>
-                <aside className={styles.sidebar}>
-                    {/* Sidebar content */}
-                </aside>
                 <main className={styles.mainContent}>
                     <h2>Reports</h2>
                     <table className={styles.ticketsTable}>
@@ -72,6 +78,7 @@ export default function Dashboard() {
                                 <th>Phone</th>
                                 <th>Disaster Type</th>
                                 <th>Message</th>
+                                <th>Picture</th>
                                 <th>Location</th>
                                 <th>Incident Time</th>
                             </tr>
@@ -84,6 +91,18 @@ export default function Dashboard() {
                                     <td>{ticket.phone}</td>
                                     <td>{ticket.disasterType}</td>
                                     <td>{ticket.message}</td>
+                                    <td>
+                                        {ticket.picture ? (
+                                            <img
+                                                src={ticket.picture}
+                                                alt="Reported Incident"
+                                                className={styles.reportedImage}
+                                                onClick={() => handleImageClick(ticket.picture)}
+                                            />
+                                        ) : (
+                                            "No Image"
+                                        )}
+                                    </td>
                                     <td>{ticket.location}</td>
                                     <td>{formatDateTime(ticket.incidentTime)}</td>
                                 </tr>
@@ -92,6 +111,16 @@ export default function Dashboard() {
                     </table>
                 </main>
             </div>
+
+            {/* Modal for image */}
+            {selectedImage && (
+                <div className={styles.modal} onClick={closeModal}>
+                    <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                        <img src={selectedImage} alt="Large view" className={styles.largeImage} />
+                        <button className={styles.closeButton} onClick={closeModal}>X</button>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

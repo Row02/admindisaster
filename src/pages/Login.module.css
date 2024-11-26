@@ -17,7 +17,12 @@
     align-items: center;
     justify-content: center;
 
-    position: relative
+    position: relative;
+
+    background-image: linear-gradient(rgba(46, 72, 204, 0.5), rgba(46, 72, 204, 0.5)), url("../assets/background.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 

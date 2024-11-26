@@ -30,7 +30,6 @@ export default function Login() {
 
     return (
         <div className={styles.container}>
-            <img src={logo} alt="Logo" className={styles.logo} />
             <div className={styles.loginBox}>
                 <h2 className={styles.title}>Admin Login</h2>
                 {error && <p className={styles.errorMessage}>{error}</p>}
